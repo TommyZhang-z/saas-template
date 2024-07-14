@@ -1,6 +1,7 @@
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
-import { Providers } from "./components/providers";
+import { Providers } from "@/components/providers";
 import "./globals.css";
+import { ModeToggle } from "@/components/mode-toggle";
 export default function RootLayout({
   children,
 }: {
@@ -10,6 +11,7 @@ export default function RootLayout({
     <html lang="en">
       <Providers>
         <body>
+          <ModeToggle />
           {/* 未登录，则显示SignedOut里的内容 */}
           <SignedOut>
             <SignInButton />
