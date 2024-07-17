@@ -8,21 +8,27 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <Providers>
-        <body>
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        <Providers>
           <ModeToggle />
-          {/* 未登录，则显示SignedOut里的内容 */}
-          <SignedOut>
-            <SignInButton />
-          </SignedOut>
-          {/* 登录，则显示SignedIns里的内容 */}
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
+          <header>
+            <SignedOut>
+              <SignInButton />
+            </SignedOut>
+            <SignedIn>
+              <UserButton
+                appearance={{
+                  elements: {
+                    userButtonAvatarBox: "size-12",
+                  },
+                }}
+              />
+            </SignedIn>
+          </header>
           {children}
-        </body>
-      </Providers>
+        </Providers>
+      </body>
     </html>
   );
 }
